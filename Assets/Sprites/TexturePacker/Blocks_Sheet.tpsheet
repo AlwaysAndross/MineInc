@@ -1,0 +1,24 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:26806e3b25e0e40de8276eaf6bd1da06:5adcf76ce92e19c64385983e1cfb20de:c979d3e28276671e82271a263227878f$
+#
+:format=40300
+:texture=Blocks_Sheet.png
+:size=776x776
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+Dirt_Coal;0;518;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Dirt_Default_01;258;518;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Dirt_Default_02;516;518;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Dirt_Default_03;0;260;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Stone_Coal;258;260;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Stone_Copper;516;260;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Stone_Default_01;0;2;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Stone_Default_02;258;2;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
+Stone_Iron;516;2;258;258; 0.5;0.5; 0;0;0;0; 4;258;0;0;0;0;258;258;258; 2;1;2;3;0;1;3
