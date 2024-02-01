@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5940669700944324247}
   - component: {fileID: 8356207476782571045}
   - component: {fileID: -4972371979439157032}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Deepslate
-  m_TagString: Untagged
+  m_TagString: Deep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
