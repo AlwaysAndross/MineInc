@@ -9,6 +9,7 @@ public class GridGeneration : MonoBehaviour
     [SerializeField] int width, height;
 
     [SerializeField] GameObject dirt, grass, stone, deepslate;
+    [SerializeField] float stoneChanceMin, stoneChanceMax, stoneChanceB, deepslateMin, deepslateMax, deepslateB;
 
     List<int> stoneArr = new List<int>();
     List<int> deepArr = new List<int>();
@@ -20,42 +21,25 @@ public class GridGeneration : MonoBehaviour
 
     void Generation()
     {
-        deepGenChance(height, width);
-        stoneGenChance(height, width);
 
         for (int x = 0; x < width; x++)
         {
-            
 
-            int chanceDeepSpawn = deepArr[0];
-            int maxDeep = deepArr[1];
-            int blendDeep = deepArr[2];
+            //getting lint from methods for grid seperation
 
-            Console.WriteLine("Deep chance : " + chanceDeepSpawn);
-            Console.WriteLine("Deep max : " + maxDeep);
-            Console.WriteLine("Deep feather : " + blendDeep);
-
-            int chanceStoneSpawn = stoneArr[0];
-            int maxStone = stoneArr[1]; 
-            int blendStone = stoneArr[0];
-
-            Console.WriteLine("Stone chance : " + chanceStoneSpawn);
-            Console.WriteLine("Stone max : " + maxStone);
-            Console.WriteLine("Stone feather : " + blendStone);
-
-
-
+            //making grid
             for (int y = 0; y < height; y++)
             {
-                int rand = UnityEngine.Random.Range(0, 10);
-                if (y < chanceDeepSpawn)
+                int rand = UnityEngine.Random.Range(0, 100); //RNG for block
+
+                if (y < (height * deepslateMin)) //DeepSpawn
                 {
-                    if (y > maxDeep & rand > 1)
+                    if (y > (height * deepslateMin) & rand > 5)
                     {
 
                         spawnObj(stone, x, y);
                     }
-                    else if (y > (maxDeep * 0.9) & rand > 3)
+                    else if (y > (height * deepslateMax) & rand > 20)
                     {
                         spawnObj(stone, x, y);
                     }
@@ -65,10 +49,18 @@ public class GridGeneration : MonoBehaviour
                     }
 
                 }
-                else if (y < chanceStoneSpawn)
+                else if (y < (height * stoneChanceMin))
                 {
+                    if (y > (height * stoneChanceMin) & rand > 5)
+                    {
+                        spawnObj(dirt, x, y);
+                    }
 
-                    if (y > maxStone & rand > 3)
+                    else if (y > (height * stoneChanceB) & rand > 10)
+                    {
+                        spawnObj(dirt, x, y);
+                    }
+                    else if (y > (height * stoneChanceMax) & rand > 30)
                     {
                         spawnObj(dirt, x, y);
                     }
@@ -96,41 +88,5 @@ public class GridGeneration : MonoBehaviour
         obj = Instantiate(obj, new Vector2(width, height), Quaternion.identity);
         obj.transform.parent = this.transform;
     }
-
-    public void stoneGenChance(int height, int width)
-    {
-
-        double CalminSpawn = (height / 1.5) + (height * 0.2);
-        double CalmaxSpawn = height / 1.5;
-        double CalblendSpawn = (height / 2) * 0.8;
-
-        int minSpawn = (int)CalminSpawn;
-        int maxSpawn = (int)CalmaxSpawn;
-
-        int totalStoneSpawn = UnityEngine.Random.Range(maxSpawn, minSpawn); //Randomizing Ints
-        stoneArr.Add(totalStoneSpawn);
-        int stoneMaxSpawn = (int)CalmaxSpawn; //Max Stone Value
-        stoneArr.Add(stoneMaxSpawn);
-        int stoneBlendSpawn = (int)CalblendSpawn; //Feathering
-        stoneArr.Add(stoneBlendSpawn);
-    }
-
-
-    public void deepGenChance(int height, int width)
-    {
-
-        double CalminSpawn = (height / 4) + (height * 0.1);
-        double CalmaxSpawn = height / 4;
-        double CalblendSpawn = (height / 4) * 0.8;
-
-        int minSpawn = (int)CalminSpawn;
-        int maxSpawn = (int)CalmaxSpawn;
-
-        int totalDeepSpawn = UnityEngine.Random.Range(maxSpawn, minSpawn); //Randomizing Ints
-        deepArr.Add(totalDeepSpawn);
-        int deepMaxSpawn = (int)CalmaxSpawn; //Max Deep Value
-        deepArr.Add(deepMaxSpawn);
-        int deepBlendSpawn = (int)CalblendSpawn; //Feathering
-        deepArr.Add(deepBlendSpawn);
-    }
 }
+

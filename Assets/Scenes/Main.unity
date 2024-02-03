@@ -222,6 +222,30 @@ PrefabInstance:
       propertyPath: height
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8581195592384401244, guid: e15c6214d481b2945b815e0983012f83, type: 3}
+      propertyPath: deepslateB
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581195592384401244, guid: e15c6214d481b2945b815e0983012f83, type: 3}
+      propertyPath: deepslateMax
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581195592384401244, guid: e15c6214d481b2945b815e0983012f83, type: 3}
+      propertyPath: deepslateMin
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581195592384401244, guid: e15c6214d481b2945b815e0983012f83, type: 3}
+      propertyPath: stoneChanceB
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581195592384401244, guid: e15c6214d481b2945b815e0983012f83, type: 3}
+      propertyPath: stoneChanceMax
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581195592384401244, guid: e15c6214d481b2945b815e0983012f83, type: 3}
+      propertyPath: stoneChanceMin
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 8581195592384401245, guid: e15c6214d481b2945b815e0983012f83, type: 3}
       propertyPath: m_RootOrder
       value: 1
