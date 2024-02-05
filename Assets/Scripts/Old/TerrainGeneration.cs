@@ -68,7 +68,7 @@ public class TerrainGeneration : MonoBehaviour
     {
         BoundsInt worldBoundsTemp = worldBounds; 
         //DirtGen
-        for (int i = 0; i < dirtBounds.x; i++);
+        for (int i = 0; i < dirtBounds.x; i++)
         {
             tileSet.BoxFill(startPosition, defaultTile, height, width, endX, endY);
         }

@@ -34,12 +34,12 @@ public class GridGeneration : MonoBehaviour
 
                 if (y < (height * deepslateMin)) //DeepSpawn
                 {
-                    if (y > (height * deepslateMin) & rand > 5)
+                    if (y > (height * deepslateMin) && rand > 5)
                     {
 
                         spawnObj(stone, x, y);
                     }
-                    else if (y > (height * deepslateMax) & rand > 20)
+                    else if (y > (height * deepslateMax) && rand > 20)
                     {
                         spawnObj(stone, x, y);
                     }
@@ -51,16 +51,16 @@ public class GridGeneration : MonoBehaviour
                 }
                 else if (y < (height * stoneChanceMin))
                 {
-                    if (y > (height * stoneChanceMin) & rand > 5)
+                    if (y > (height * stoneChanceMin) && rand > 5)
                     {
                         spawnObj(dirt, x, y);
                     }
 
-                    else if (y > (height * stoneChanceB) & rand > 10)
+                    else if (y > (height * stoneChanceB) && rand > 10)
                     {
                         spawnObj(dirt, x, y);
                     }
-                    else if (y > (height * stoneChanceMax) & rand > 30)
+                    else if (y > (height * stoneChanceMax) && rand > 30)
                     {
                         spawnObj(dirt, x, y);
                     }
