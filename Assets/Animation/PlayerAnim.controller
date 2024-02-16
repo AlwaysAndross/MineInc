@@ -34,7 +34,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsOnY
+    m_ConditionEvent: MakeSpriteUpDown
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: MakeSpriteLeftRight
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 485140194811681509}
@@ -59,7 +62,13 @@ AnimatorController:
   m_Name: PlayerAnim
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IsOnY
+  - m_Name: MakeSpriteUpDown
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MakeSpriteLeftRight
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -114,7 +123,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsOnY
+    m_ConditionEvent: MakeSpriteUpDown
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: MakeSpriteLeftRight
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7535234038199150198}
