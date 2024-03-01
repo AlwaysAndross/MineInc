@@ -5115,5 +5115,5 @@ MonoBehaviour:
   - name: Bedrock
     prefab: {fileID: 6146170980784015973, guid: 5f07028485981ce4fba84731e78f685f, type: 3}
     hardness: 0
-  height: 1000
-  width: 50
+  height: 100
+  width: 100

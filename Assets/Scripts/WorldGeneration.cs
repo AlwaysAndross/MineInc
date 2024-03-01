@@ -12,6 +12,8 @@ public class WorldGeneration : MonoBehaviour
     [SerializeField] int height;
     [SerializeField] int width;
 
+    GameObject child;
+
     int currentX;
     int currentY;
 
@@ -19,6 +21,9 @@ public class WorldGeneration : MonoBehaviour
 
     private void Start()
     {
+        Console.WriteLine(child);
+
+        child.SetActive(true);
 
         for (int y = 0; y < height; y++)
         {
@@ -46,7 +51,7 @@ public class WorldGeneration : MonoBehaviour
         //Bedrock
         if (currentY < (height * 0.30))
         {
-            if(currentY < (height * 0.30) && currentY >= (height * 0.25) && rand >= 3)
+            if (currentY < (height * 0.30) && currentY >= (height * 0.26) && rand >= 6)
             {
                 type = 5;
             }
@@ -60,9 +65,9 @@ public class WorldGeneration : MonoBehaviour
             }
         }
         //Deepslate
-        else if(currentY < (height * 0.50))
+        else if (currentY < (height * 0.50))
         {
-            if (currentY < (height * 0.50) && currentY >= (height * 0.40) && rand >= 3)
+            if (currentY < (height * 0.50) && currentY >= (height * 0.46) && rand >= 6)
             {
                 type = 4;
             }
@@ -78,24 +83,58 @@ public class WorldGeneration : MonoBehaviour
         //Stone
         else if (currentY < (height * 0.70))
         {
-            type = 4;
+            if (currentY < (height * 0.70) && currentY >= (height * 0.66) && rand >= 6)
+            {
+                type = 3;
+            }
+            else if (currentY < (height * 0.70) && currentY >= (height * 0.68) && rand >= 2)
+            {
+                type = 3;
+            }
+            else
+            {
+                type = 4;
+            }
         }
         //HardDirt
         else if (currentY < (height * 0.80))
         {
-            type = 3;
+            if (currentY < (height * 0.80) && currentY >= (height * 0.76) && rand >= 6)
+            {
+                type = 2;
+            }
+            else if (currentY < (height * 0.80) && currentY >= (height * 0.78) && rand >= 2)
+            {
+                type = 2;
+            }
+            else
+            {
+                type = 3;
+            }
         }
         //DarkDirt
         else if (currentY < (height * 0.90))
         {
-            type = 2;
+            if (currentY < (height * 0.90) && currentY >= (height * 0.86) && rand >= 6)
+            {
+                type = 1;
+            }
+            else if (currentY < (height * 0.90) && currentY >= (height * 0.88) && rand >= 2)
+            {
+                type = 1;
+            }
+            else
+            {
+                type = 2;
+            }
         }
         //Dirt
-        else 
+        else
         {
             type = 1;
         }
     }
+
 }
 
 [Serializable]
@@ -104,5 +143,6 @@ public struct BlockPrefabElements
     public string name;
     public GameObject prefab;
     public int hardness;
+    public GameObject ore;
 }
 
