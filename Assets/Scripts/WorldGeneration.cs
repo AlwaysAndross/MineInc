@@ -8,6 +8,7 @@ public class WorldGeneration : MonoBehaviour
 {
     GameObject[,] blocks;
     [SerializeField] BlockPrefabElements[] blockPrefabElements;
+    //[SerializeField]  blockPrefabElements ;
 
     [SerializeField] int height;
     [SerializeField] int width;
@@ -21,10 +22,6 @@ public class WorldGeneration : MonoBehaviour
 
     private void Start()
     {
-        Console.WriteLine(child);
-
-        child.SetActive(true);
-
         for (int y = 0; y < height; y++)
         {
             currentY++;
@@ -143,6 +140,5 @@ public struct BlockPrefabElements
     public string name;
     public GameObject prefab;
     public int hardness;
-    public GameObject ore;
 }
 
