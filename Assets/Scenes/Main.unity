@@ -303,5 +303,13 @@ MonoBehaviour:
   - name: Bedrock
     prefab: {fileID: 6146170980784015973, guid: 5f07028485981ce4fba84731e78f685f, type: 3}
     hardness: 0
+  orePrefabElements:
+  - type: 2
+    oreSprite: {fileID: -2031803484, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 1
+    oreSprite: {fileID: -650678700, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 0
+    oreSprite: {fileID: 1564657566, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  Ores: {fileID: 0}
   height: 100
   width: 100

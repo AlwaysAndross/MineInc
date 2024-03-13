@@ -8,7 +8,9 @@ public class WorldGeneration : MonoBehaviour
 {
     GameObject[,] blocks;
     [SerializeField] BlockPrefabElements[] blockPrefabElements;
-    //[SerializeField]  blockPrefabElements ;
+    [SerializeField] OreTypePrefab[] orePrefabElements;
+    [SerializeField] GameObject Ores;
+    OreGeneration oreComponent;
 
     [SerializeField] int height;
     [SerializeField] int width;
@@ -17,6 +19,8 @@ public class WorldGeneration : MonoBehaviour
 
     int currentX;
     int currentY;
+
+    bool oreSpawned = false;
 
     int type = 0;
 
@@ -28,9 +32,12 @@ public class WorldGeneration : MonoBehaviour
 
             for (int x = 0; x < width; x++)
             {
+                oreSpawned = false;
                 currentX++;
-                BlockType(currentX);
-                Instantiate(blockPrefabElements[type].prefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                BlockType();
+                GameObject createdBlock = Instantiate(blockPrefabElements[type].prefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                oreComponent = createdBlock.AddComponent<OreGeneration>();
+                OreGen();
             }
 
         }
@@ -41,7 +48,7 @@ public class WorldGeneration : MonoBehaviour
 
     }
 
-    void BlockType(int currentHeight)
+    void BlockType()
     {
         int rand = UnityEngine.Random.Range(0, 10);
 
@@ -132,6 +139,27 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
+    void OreGen()
+    {
+        int rand = UnityEngine.Random.Range(0, 20);
+
+        if (currentY > (height * 0.95) && currentY > (height * 0.65) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[0]);
+            oreSpawned = true;
+        }
+        if (currentY > (height * 0.75) && currentY > (height * 0.35) && !oreSpawned && rand < 3) 
+        {
+            oreComponent.SetUpOre(orePrefabElements[1]);
+            oreSpawned = true;
+        }
+        if (currentY > (height * 0.45) && !oreSpawned && rand < 4) 
+        {
+            oreComponent.SetUpOre(orePrefabElements[2]);
+            oreSpawned = true;
+        }
+    }
+
 }
 
 [Serializable]
@@ -142,3 +170,16 @@ public struct BlockPrefabElements
     public int hardness;
 }
 
+public enum OreType
+{
+    COPPER,
+    URANIUM,
+    IRON,
+}
+
+[Serializable]
+public struct OreTypePrefab
+{
+    public OreType type;
+    public Sprite oreSprite;
+}
