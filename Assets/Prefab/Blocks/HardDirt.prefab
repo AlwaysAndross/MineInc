@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3407697432728922202}
   - component: {fileID: 4674556699870517230}
   - component: {fileID: 879448735557159054}
+  - component: {fileID: 3765116750772231292}
   m_Layer: 3
   m_Name: HardDirt
   m_TagString: HardDirt
@@ -165,3 +166,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3765116750772231292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4956409323803772162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c3d208a3e6f3f4a92b49cf45d2c189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  blockType: 3
+  minDrillLevel: 2

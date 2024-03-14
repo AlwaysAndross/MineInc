@@ -8,6 +8,12 @@ using UnityEngine;
 public class OreGeneration : MonoBehaviour
 {
     GameObject oreSprite;
+    OreTypePrefab oreTypeSet;
+
+    public OreTypePrefab GetOreType()
+    {
+        return oreTypeSet;
+    }
 
     public void SetUpOre(OreTypePrefab prefab)
     {
@@ -19,5 +25,7 @@ public class OreGeneration : MonoBehaviour
         oreSprite.transform.name = prefab.type.ToString() + "_Ore";
         addSprite.sprite = prefab.oreSprite;
         addSprite.sortingLayerName = "Ore";
+        oreTypeSet = prefab;
+       
     }
 }

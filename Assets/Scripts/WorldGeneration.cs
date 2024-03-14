@@ -1,50 +1,78 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Cinemachine;
 
 public class WorldGeneration : MonoBehaviour
 {
-    GameObject[,] blocks;
     [SerializeField] BlockPrefabElements[] blockPrefabElements;
-    [SerializeField] OreTypePrefab[] orePrefabElements;
-    [SerializeField] GameObject Ores;
-    OreGeneration oreComponent;
+    [SerializeField] OreGenerationLocationData[] oreGenerationLocationData;
+    [SerializeField] GameObject playerPrefab;
+    GameObject border;
+    [SerializeField] CinemachineVirtualCamera camera;
+    [SerializeField] InventoryData inventoryData;
 
     [SerializeField] int height;
     [SerializeField] int width;
 
-    GameObject child;
 
     int currentX;
     int currentY;
 
-    bool oreSpawned = false;
+    System.Random random;
 
     int type = 0;
 
     private void Start()
     {
+        random = new System.Random(1234);
         for (int y = 0; y < height; y++)
         {
             currentY++;
 
             for (int x = 0; x < width; x++)
             {
-                oreSpawned = false;
                 currentX++;
                 BlockType();
                 GameObject createdBlock = Instantiate(blockPrefabElements[type].prefab, new Vector3((x + 0.5f), (y + 0.5f), 0), Quaternion.identity, transform);
-                oreComponent = createdBlock.AddComponent<OreGeneration>();
-                OreGen();
+                OreTypePrefab oreGenData;
+                if (OreGen(out oreGenData))
+                {
+                    OreGeneration oreComponent = createdBlock.AddComponent<OreGeneration>();
+                    oreComponent.SetUpOre(oreGenData);
+                };
+
             }
 
         }
         for (int x = 0; x < width; x++)
         {
-            Instantiate(blockPrefabElements[0].prefab, new Vector3(x, height, 0), Quaternion.identity, transform);
+            Instantiate(blockPrefabElements[0].prefab, new Vector3((x + 0.5f), (height + 0.5f), 0), Quaternion.identity, transform);
         }
+        GameObject player = Instantiate(playerPrefab, new Vector3(0, (height + 1.5f), 0), Quaternion.identity);
+        player.transform.GetChild(0).GetComponent<PlayerDrilling>().inventoryData = inventoryData;
+        camera.Follow = player.transform;
+        CreateBorders();
+    }
+
+    void CreateBorders()
+    {
+        CreateBorderCollider(-0.25f, height / 2 + 1, 0.5f, height + 4);
+        CreateBorderCollider(width + 0.25f, height / 2 + 1, 0.5f, height + 4);
+        CreateBorderCollider(width / 2 - 1, -0.25f, width + 4, 0.5f);
+        CreateBorderCollider(width / 2 - 1, height + 2.25f, width + 4, 0.5f);
+    }
+
+    void CreateBorderCollider(float posX, float posY, float scaleX, float scaleY)
+    {
+        border = new GameObject();
+        BoxCollider2D collider = border.AddComponent<BoxCollider2D>();
+        collider.transform.position = new Vector3(posX, posY);
+        collider.transform.localScale = new Vector3(scaleX, scaleY);
 
     }
 
@@ -139,109 +167,31 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
-    void OreGen()
+    bool OreGen(out OreTypePrefab result)
     {
-        int rand = Reroll();
-        
-        if (currentY < (height * 0.99) && currentY > (height * 0.80) && !oreSpawned && rand < 2)
+        result = oreGenerationLocationData[0].oreGenerationData; // need to assign something
+
+        foreach (OreGenerationLocationData data in oreGenerationLocationData)
         {
-            oreComponent.SetUpOre(orePrefabElements[0]);
-            oreSpawned = true;
+            int rand = Reroll();
+            if (
+                currentY < (height * data.maxHeightPercentage) &&
+                currentY > (height * data.minHeightPercentage) &&
+                rand < data.chance)
+            {
+                result = data.oreGenerationData;
+                return true;
+            }
         }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.95) && currentY > (height * 0.77) && !oreSpawned && rand < 2) 
-        {
-            oreComponent.SetUpOre(orePrefabElements[1]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.90) && currentY > (height * 0.70) && !oreSpawned && rand < 2) 
-        {
-            oreComponent.SetUpOre(orePrefabElements[2]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.81) && currentY > (height * 0.60) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[3]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.75) && currentY > (height * 0.50) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[4]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.62) && currentY > (height * 0.35) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[5]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.55) && currentY > (height * 0.24) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[6]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.45) && currentY > (height * 0.13) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[7]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.30) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[8]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
-        if (currentY < (height * 0.10) && !oreSpawned && rand < 2)
-        {
-            oreComponent.SetUpOre(orePrefabElements[9]);
-            oreSpawned = true;
-        }
-        else
-        {
-            Reroll();
-        }
+        return false;
 
     }
 
-    static int Reroll()
+    int Reroll()
     {
-
-        int rand = UnityEngine.Random.Range(0, 20);
-        return rand;
+        return random.Next(20);
     }
+
 
 
 }
@@ -268,9 +218,29 @@ public enum OreType
     COAL,
 }
 
+public enum BlockType
+{
+    GRASS,
+    DIRT,
+    DARKDIRT,
+    HARDDIRT,
+    STONE,
+    DEEPSLATE,
+    BEDROCK,
+}
+
 [Serializable]
 public struct OreTypePrefab
 {
     public OreType type;
     public Sprite oreSprite;
+}
+
+[Serializable]
+public struct OreGenerationLocationData
+{
+    public float minHeightPercentage;
+    public float maxHeightPercentage;
+    public int chance;
+    public OreTypePrefab oreGenerationData;
 }

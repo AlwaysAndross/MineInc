@@ -162,10 +162,10 @@ namespace PlayerStuff
                 isFlippedUp = true;
                 isFlippedRight = true;
             }
-            else if (inputMoveDirection == MoveDirection.Down && isFlippedUp)
+            else if (inputMoveDirection == MoveDirection.Down && (isFlippedUp || !isFlippedRight))
             {
-                isFlippedUp = false;
                 isFlippedRight = true;
+                isFlippedUp = false;
             }
 
             currentScale = new Vector3(isFlippedRight ? 1 : -1, isFlippedUp ? -1 : 1, 1);
@@ -177,19 +177,21 @@ namespace PlayerStuff
         //calculate rotation to rotate drill game object collider
         float calculateRotation()
         {
+
             if (inputMoveDirection == MoveDirection.Up)
             {
                 return 90;
+            }
+            
+            else if (inputMoveDirection == MoveDirection.Left)
+            {
+                return 0;
             }
             else if (inputMoveDirection == MoveDirection.Down)
             {
                 return -90;
             }
-            else if (inputMoveDirection == MoveDirection.Left && !isFlippedUp)
-            {
-                return 0;
-            }
-            else if (inputMoveDirection == MoveDirection.Right &&!isFlippedUp)
+            else if (inputMoveDirection == MoveDirection.Right)
             {
                 return 0;
             }

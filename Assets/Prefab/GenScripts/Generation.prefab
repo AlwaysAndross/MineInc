@@ -88,5 +88,5 @@ MonoBehaviour:
   - type: 8
     oreSprite: {fileID: 186805123, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
   Ores: {fileID: 0}
-  height: 100
-  width: 100
+  height: 50
+  width: 50
