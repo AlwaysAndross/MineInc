@@ -144,6 +144,8 @@ namespace PlayerStuff
         public void flipSprite()
         {
             Vector3 currentScale = transform.localScale;
+            drill.gameObject.SetActive(false);
+            drill.gameObject.SetActive(true);
 
             if (inputMoveDirection == MoveDirection.Right && (!isFlippedRight || isFlippedUp))
             {

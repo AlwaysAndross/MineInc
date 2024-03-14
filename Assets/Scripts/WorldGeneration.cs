@@ -35,7 +35,7 @@ public class WorldGeneration : MonoBehaviour
                 oreSpawned = false;
                 currentX++;
                 BlockType();
-                GameObject createdBlock = Instantiate(blockPrefabElements[type].prefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                GameObject createdBlock = Instantiate(blockPrefabElements[type].prefab, new Vector3((x + 0.5f), (y + 0.5f), 0), Quaternion.identity, transform);
                 oreComponent = createdBlock.AddComponent<OreGeneration>();
                 OreGen();
             }
@@ -141,24 +141,108 @@ public class WorldGeneration : MonoBehaviour
 
     void OreGen()
     {
-        int rand = UnityEngine.Random.Range(0, 20);
-
-        if (currentY > (height * 0.95) && currentY > (height * 0.65) && !oreSpawned && rand < 2)
+        int rand = Reroll();
+        
+        if (currentY < (height * 0.99) && currentY > (height * 0.80) && !oreSpawned && rand < 2)
         {
             oreComponent.SetUpOre(orePrefabElements[0]);
             oreSpawned = true;
         }
-        if (currentY > (height * 0.75) && currentY > (height * 0.35) && !oreSpawned && rand < 3) 
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.95) && currentY > (height * 0.77) && !oreSpawned && rand < 2) 
         {
             oreComponent.SetUpOre(orePrefabElements[1]);
             oreSpawned = true;
         }
-        if (currentY > (height * 0.45) && !oreSpawned && rand < 4) 
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.90) && currentY > (height * 0.70) && !oreSpawned && rand < 2) 
         {
             oreComponent.SetUpOre(orePrefabElements[2]);
             oreSpawned = true;
         }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.81) && currentY > (height * 0.60) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[3]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.75) && currentY > (height * 0.50) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[4]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.62) && currentY > (height * 0.35) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[5]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.55) && currentY > (height * 0.24) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[6]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.45) && currentY > (height * 0.13) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[7]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.30) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[8]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+        if (currentY < (height * 0.10) && !oreSpawned && rand < 2)
+        {
+            oreComponent.SetUpOre(orePrefabElements[9]);
+            oreSpawned = true;
+        }
+        else
+        {
+            Reroll();
+        }
+
     }
+
+    static int Reroll()
+    {
+
+        int rand = UnityEngine.Random.Range(0, 20);
+        return rand;
+    }
+
 
 }
 
@@ -173,8 +257,15 @@ public struct BlockPrefabElements
 public enum OreType
 {
     COPPER,
-    URANIUM,
     IRON,
+    SILVER,
+    GOLD,
+    RUBY,
+    SAPPHIRE,
+    EMERALD,
+    DIAMOND,
+    MULTI,
+    COAL,
 }
 
 [Serializable]

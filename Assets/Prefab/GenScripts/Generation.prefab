@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8581195592384401245}
+  - component: {fileID: 8581195592487200707}
   m_Layer: 0
   m_Name: Generation
   m_TagString: Untagged
@@ -31,3 +32,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8581195592487200707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581195592384401242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7756fa7ae3e61ee47bc6d99c8556b1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockPrefabElements:
+  - name: Grass
+    prefab: {fileID: 7546040381968740966, guid: fb009d4aab7a27443815f9e10e9cf8e6, type: 3}
+    hardness: 0
+  - name: Dirt
+    prefab: {fileID: 4956409323803772162, guid: bf2b3ccb115a4584ea191c66d8042da5, type: 3}
+    hardness: 0
+  - name: DarkDirt
+    prefab: {fileID: 4956409323803772162, guid: f175585dd35c63c4d9daf75173a8be39, type: 3}
+    hardness: 0
+  - name: HardDirt
+    prefab: {fileID: 4956409323803772162, guid: 3b9ee286a8b1c424cbe99df1117b6301, type: 3}
+    hardness: 0
+  - name: Stone
+    prefab: {fileID: 7752967276907898825, guid: c5ee0c4e6e70cf8469e41f863c912e55, type: 3}
+    hardness: 0
+  - name: DeepSlate
+    prefab: {fileID: 6146170980784015973, guid: aba71ef0935071e4791f45a9bf3b7c2b, type: 3}
+    hardness: 0
+  - name: Bedrock
+    prefab: {fileID: 6146170980784015973, guid: 5f07028485981ce4fba84731e78f685f, type: 3}
+    hardness: 0
+  orePrefabElements:
+  - type: 9
+    oreSprite: {fileID: 1564657566, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 0
+    oreSprite: {fileID: -1285144312, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 1
+    oreSprite: {fileID: -540903066, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 2
+    oreSprite: {fileID: -2031803484, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 3
+    oreSprite: {fileID: -650678700, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 5
+    oreSprite: {fileID: 390718682, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 6
+    oreSprite: {fileID: 1895590594, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 4
+    oreSprite: {fileID: -924706286, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 7
+    oreSprite: {fileID: -59707137, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  - type: 8
+    oreSprite: {fileID: 186805123, guid: 19d696201922d2c41bf86f51bbe724be, type: 3}
+  Ores: {fileID: 0}
+  height: 100
+  width: 100

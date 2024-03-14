@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 879448735557159054}
   m_Layer: 3
   m_Name: DarkDirt
-  m_TagString: Block
+  m_TagString: DarkDirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

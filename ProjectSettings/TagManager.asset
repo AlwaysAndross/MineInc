@@ -10,6 +10,10 @@ TagManager:
   - Deep
   - Ore
   - Block
+  - Bedrock
+  - HardDirt
+  - DarkDirt
+  - DeepSlate
   layers:
   - Default
   - TransparentFX

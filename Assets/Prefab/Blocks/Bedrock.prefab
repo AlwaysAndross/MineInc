@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -4972371979439157032}
   m_Layer: 3
   m_Name: Bedrock
-  m_TagString: Block
+  m_TagString: Bedrock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
